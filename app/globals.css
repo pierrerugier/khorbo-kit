@@ -1,0 +1,81 @@
+/* Le style neutre du kit : le même pour tout le monde. La leçon « Le style de votre outil » le remplace par le vôtre. */
+:root {
+  --fond: #f6f6f4;
+  --carte: #ffffff;
+  --encre: #1c1c1a;
+  --gris: #6b6b66;
+  --ligne: #e4e4df;
+  --accent: #1c1c1a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.entete {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: var(--carte);
+  border-bottom: 1px solid var(--ligne);
+}
+.pastille {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+.nom { font-weight: 700; }
+.entete nav { margin-left: auto; }
+.entete a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+.entete a[aria-current="page"] { background: var(--fond); }
+
+main { max-width: 880px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.repere {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--carte);
+  border: 1px solid var(--ligne);
+  color: var(--gris);
+  font-size: 14px;
+  font-weight: 600;
+}
+h1 { margin: 0 0 10px; font-size: 40px; line-height: 1.1; }
+.intro { margin: 0 0 28px; max-width: 60ch; color: var(--gris); }
+
+.cadre { overflow-x: auto; border: 1px solid var(--ligne); border-radius: 14px; background: var(--carte); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 14px 18px; text-align: left; }
+th { font-size: 14px; color: var(--gris); border-bottom: 1px solid var(--ligne); }
+tr + tr td { border-top: 1px solid var(--ligne); }
+.nombre { text-align: right; font-variant-numeric: tabular-nums; }
+
+.message { padding: 18px; border: 1px dashed var(--ligne); border-radius: 14px; background: var(--carte); }
+
+@media (max-width: 560px) {
+  main { padding: 28px 16px 60px; }
+  h1 { font-size: 32px; }
+  th, td { padding: 12px; }
+}

@@ -1,0 +1,19 @@
+# Les programmes installés et ce que Next fabrique
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+
+# Les secrets : jamais sur GitHub
+.env
+.env.local
+.env.*.local
+
+# La base de brouillon, sur l'ordinateur seulement
+local.db
+local.db-*
+
+# Vercel et le Mac
+.vercel
+.DS_Store
