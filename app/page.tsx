@@ -1,12 +1,15 @@
 import { connection } from "next/server";
 import { db } from "@/db";
 import { exemples } from "@/db/schema";
+import { exigerUtilisateur } from "@/lib/connexion";
 
 const DATE = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 export default async function Accueil() {
   // La table est relue dans la base à chaque visite, jamais figée au moment de la mise en ligne.
   await connection();
+  // Chaque page de l'outil commence par là : sans session valable, retour à la page de connexion.
+  const utilisateur = await exigerUtilisateur();
 
   let lignes: (typeof exemples.$inferSelect)[] = [];
   let erreur = false;
@@ -19,9 +22,10 @@ export default async function Accueil() {
   return (
     <>
       <p className="repere">Kit de départ</p>
-      <h1>Bienvenue</h1>
+      <h1>Bienvenue, {utilisateur.nom.split(" ")[0]}</h1>
       <p className="intro">
-        Ceci est la page d&apos;accueil du kit de départ. Une base de données est déjà branchée, avec une première table à l&apos;intérieur.
+        Ceci est la page d&apos;accueil du kit de départ. La porte est fermée : il faut un compte pour entrer. Une base de données
+        est déjà branchée, avec une première table à l&apos;intérieur.
       </p>
 
       {erreur ? (
